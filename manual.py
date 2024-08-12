@@ -26,3 +26,26 @@ for turn in range(8):
 			marked.append(num)
 			break
 	board()
+bingo = 0
+for i in range(5):
+	row = []
+	for j in range(5):
+		row.append(i*5+j+1)
+	if all(item in marked for item in row):
+		bingo += 1
+for i in range(5):
+	column = []
+	for j in range(5):
+		column.append(i+1+j*5)
+	if all(item in marked for item in column):
+		bingo += 1
+diag1 = [1, 7, 13, 19, 25]
+diag2 = [5, 9, 13, 17, 21]
+if all(item in marked for item in diag1):
+	bingo += 1
+if all(item in marked for item in diag2):
+	bingo += 1
+if bingo == 4:
+	print('win')
+else:
+	print('lose')
